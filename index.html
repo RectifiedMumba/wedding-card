@@ -243,11 +243,22 @@
             width: 150px;       /* Adjust size as needed */
             height: auto;       /* Maintains aspect ratio */
         }
+        /* The overlay image styling for floral design*/
+        .bottom-left-overlay {
+            position: absolute; /* Takes the image out of normal document flow */
+            bottom: 20px;          /* Distance from the top edge */
+            left: 20px;        /* Distance from the right edge */
+            z-index: 999;       /* Ensures it stays on top of other content */
+            width: 150px;       /* Adjust size as needed */
+            height: auto;       /* Maintains aspect ratio */
+        }
   </style>
 </head>
 <body>
 
   <div class="invitation-container">
+    <img src="top right floral.png" class="top-right-overlay">
+    <img src="bottom left floral.png" class="bottom-left-overlay">
     <!-- Top Tabs -->
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="switchPage(0)">1. Invitation</button>
@@ -257,7 +268,6 @@
 
     <!-- PAGE 1: Invitation & Couple Details -->
     <div class="page-section active" id="page-0">
-      <img src="top right floral.png" class="top-right-overlay">
       <p class="subtitle">The Wedding Celebration</p>
       <h1 class="couple-names">Alexandra & Samuel</h1>
       <p class="invitation-text">
