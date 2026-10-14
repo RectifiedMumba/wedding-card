@@ -238,12 +238,10 @@
 
     /* The overlay image styling for floral design*/
         .top-right-overlay {
-            position:fixed; /* Takes the image out of normal document flow */
-            top: 20px;          /* Distance from the top edge */
-            right: 20px;        /* Distance from the right edge */
-            z-index: 999;       /* Ensures it stays on top of other content */
-            width: 100px;       /* Adjust size as needed */
+            display: flex; /* Takes the image out of normal document flow */
+            width: 30px;       /* Adjust size as needed */
             height: auto;       /* Maintains aspect ratio */
+            justify-content: flex-end;
         }
         /* The overlay image styling for floral design*/
         .bottom-left-overlay {
