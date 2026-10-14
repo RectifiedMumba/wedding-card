@@ -238,7 +238,7 @@
 
     /* The overlay image styling for floral design*/
         .top-right-overlay {
-            position: absolute; /* Takes the image out of normal document flow */
+            position:fixed; /* Takes the image out of normal document flow */
             top: 20px;          /* Distance from the top edge */
             right: 20px;        /* Distance from the right edge */
             z-index: 999;       /* Ensures it stays on top of other content */
@@ -247,7 +247,7 @@
         }
         /* The overlay image styling for floral design*/
         .bottom-left-overlay {
-            position: absolute; /* Takes the image out of normal document flow */
+            position: fixed; /* Takes the image out of normal document flow */
             bottom: 20px;          /* Distance from the top edge */
             left: 20px;        /* Distance from the right edge */
             z-index: 999;       /* Ensures it stays on top of other content */
@@ -271,8 +271,6 @@
 <body>
 
   <div class="invitation-container">
-    <img src="top right floral.png" class="top-right-overlay">
-    <img src="bottom left floral.png" class="bottom-left-overlay">
     <!-- Top Tabs -->
     <div class="nav-tabs">
       <button class="tab-btn active" onclick="switchPage(0)">1. Invitation</button>
@@ -280,6 +278,7 @@
       <button class="tab-btn" onclick="switchPage(2)">3. Program</button>
     </div>
 
+    <img src="top right floral.png" class="top-right-overlay">
     <!-- PAGE 1: Invitation & Couple Details -->
     <div class="page-section active" id="page-0">
       <p class="subtitle">The Wedding Celebration</p>
@@ -363,6 +362,7 @@
       </div>
     </div>
 
+    <img src="bottom left floral.png" class="bottom-left-overlay">
     <!-- Bottom Navigation Arrows -->
     <div class="footer-nav">
       <button class="nav-arrow-btn" id="prevBtn" onclick="changePage(-1)">&larr; Back</button>
