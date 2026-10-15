@@ -49,6 +49,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
+      background-color: #e5e6dcff;
     }
 
     /* Navigation Bar / Tabs */
@@ -237,21 +238,27 @@
     }
 
     /* The overlay image styling for floral design*/
-        .top-right-overlay {
-            display: flex; /* Takes the image out of normal document flow */
-            width: 30px;       /* Adjust size as needed */
-            height: auto;       /* Maintains aspect ratio */
+        .top-image-container {
+            display: flex;  
             justify-content: flex-end;
+            width: 100%;
+            height: auto;
         }
-        /* The overlay image styling for floral design*/
-        .bottom-left-overlay {
-            position: fixed; /* Takes the image out of normal document flow */
-            bottom: 20px;          /* Distance from the top edge */
-            left: 20px;        /* Distance from the right edge */
-            z-index: 999;       /* Ensures it stays on top of other content */
-            width: 100px;       /* Adjust size as needed */
-            height: auto;       /* Maintains aspect ratio */
+        .bottom-image-container{
+          display: flex;
+          justify-content: start;
+          width: 100%;
+          height: auto;
         }
+        .bottom-image{
+          width: 100px;
+          height: auto;
+        }
+        .top-image{
+          width: 100px;
+          height: auto;
+        }
+
         iframe{
             display: block;
             border: 1px thin #b3b2af;
@@ -263,6 +270,10 @@
           justify-content: center;
           align-items: center;
           margin-bottom: 40px;
+        }
+        #couple-image{
+          width: 420px;
+          height: auto;
         }
   </style>
 </head>
@@ -284,6 +295,7 @@
     <!-- PAGE 1: Invitation & Couple Details -->
     <div class="page-section active" id="page-0">
       <p class="subtitle">The Wedding Celebration</p>
+      <div id="image-container"><img src="couple-image.png" id="couple-image"></div>
       <h1 class="couple-names">Tonny and Emily</h1>
       <img src="ring design.png" width="150px">
       <p class="invitation-text">
@@ -322,7 +334,7 @@
       <div class="qr-wrapper" id="qrcode"></div>
       
       <div style="margin-top: 15px;">
-        <a href="https://example.com/rsvp" target="_blank" style="font-size: 0.8rem; color: var(--accent-color); text-decoration: none; font-weight: 500;">
+        <a href="https://forms.gle/2MBQ88y9x91tA2xx7" target="_blank" style="font-size: 0.8rem; color: var(--accent-color); text-decoration: none; font-weight: 500;">
           Request to Attend &rarr;
         </a>
       </div>
@@ -364,7 +376,10 @@
       </div>
     </div>
 
-    <img src="bottom left floral.png" class="bottom-left-overlay">
+    <!--Floral image for top right-->
+    <div class="bottom-image-container">
+      <img src="bottom left floral.png" class="bottom-image">
+    </div>
     <!-- Bottom Navigation Arrows -->
     <div class="footer-nav">
       <button class="nav-arrow-btn" id="prevBtn" onclick="changePage(-1)">&larr; Back</button>
@@ -404,7 +419,7 @@
     // Automatically generate QR code on page load pointing to RSVP link
     window.onload = function() {
       new QRCode(document.getElementById("qrcode"), {
-        text: "https://example.com/wedding-rsvp",
+        text: "https://forms.gle/2MBQ88y9x91tA2xx7",
         width: 140,
         height: 140,
         colorDark: "#2c2a29",
