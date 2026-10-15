@@ -49,7 +49,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      background-color: #e5e6dcff;
+      background-color: rgb(249, 249, 247);
     }
 
     /* Navigation Bar / Tabs */
@@ -251,11 +251,11 @@
           height: auto;
         }
         .bottom-image{
-          width: 100px;
+          width: 80px;
           height: auto;
         }
         .top-image{
-          width: 100px;
+          width: 80px;
           height: auto;
         }
 
@@ -272,9 +272,33 @@
           margin-bottom: 40px;
         }
         #couple-image{
-          width: 420px;
+          width: 340px;
           height: auto;
+          margin-bottom: 20px;
+          border-radius: 8px;
         }
+
+        .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .countdown div {
+      background: #ddb068;
+      color: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      width: 70px;
+    }
+
+    .countdown div span {
+      display: block;
+      font-size: 1.1em;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -295,8 +319,15 @@
     <!-- PAGE 1: Invitation & Couple Details -->
     <div class="page-section active" id="page-0">
       <p class="subtitle">The Wedding Celebration</p>
-      <div id="image-container"><img src="couple-image.png" id="couple-image"></div>
+      <div id="image-container"><img src="realistic-couple.jpeg" id="couple-image"></div>
       <h1 class="couple-names">Tonny and Emily</h1>
+    <!--code for countdown timer-->
+    <div class="countdown">
+      <div><span id="days">0</span>Days</div>
+      <div><span id="hours">0</span>Hours</div>
+      <div><span id="minutes">0</span>Min</div>
+      <div><span id="seconds">0</span>Sec</div>
+    </div>
       <img src="ring design.png" width="150px">
       <p class="invitation-text">
         Together with their families, invite you to celebrate the joyous occasion of their marriage.
@@ -340,6 +371,7 @@
       </div>
       <p class="invitation-text">Accept request to attend by 20th December 2026.</p>
       <p class="invitation-text"><i>Please note that no kids are allowed.</i></p>
+      <p class="invitation-text"><i>Monetary gifts of K500 per couple and K300 singles are greatly appreciated.</i></p>
       <p class="invitation-text" class="color-theme">Color theme is burgundy.</p>
     </div>
 
@@ -351,25 +383,25 @@
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-time">8:00 AM</div>
+          <div class="timeline-time">8:00 hrs</div>
           <div class="timeline-title">Guest Arrival & Seating</div>
           <div class="timeline-desc">welcoming of guests & family members</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-time">9:00 AM</div>
+          <div class="timeline-time">9:00 hrs</div>
           <div class="timeline-title">The Ceremony</div>
           <div class="timeline-desc">Exchange of vows & rings</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-time">2:00 PM</div>
+          <div class="timeline-time">14:00 hrs</div>
           <div class="timeline-title">Photo Shoot</div>
           <div class="timeline-desc">Photos with the bride & groom</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-time">4:00 PM</div>
+          <div class="timeline-time">16:00 hrs</div>
           <div class="timeline-title">Reception & Dinner</div>
           <div class="timeline-desc">Toasts, dining, and dancing</div>
         </div>
@@ -415,6 +447,36 @@
         switchPage(newPage);
       }
     }
+
+
+
+    // script for the countdown timer
+    // Set the wedding date
+    const weddingDate = new Date("Jan 3, 2027 12:00:00").getTime();
+
+    // Update countdown every second
+    const timer = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      // Calculate time parts
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display results
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+
+      // If countdown is finished
+      if (distance < 0) {
+        clearInterval(timer);
+        document.body.innerHTML = "<h1>🎉 Just Married! 🎉</h1>";
+      }
+    }, 1000); // end of script for countdown timer
 
     // Automatically generate QR code on page load pointing to RSVP link
     window.onload = function() {
