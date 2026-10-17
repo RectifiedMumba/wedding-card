@@ -326,10 +326,12 @@
       background-color: #fff;
       border-radius: 8px;
       margin-bottom: 40px;
-      margin-top: 40px;      
+      margin-top: 40px;   
+      height: auto;  
     }
     .google-form{
       width: 100%;
+      min-height: 350px;
       height: auto;
       border: none;
       overflow: scroll;
@@ -514,6 +516,17 @@
     }
 
 
+  // for resizing the iframe to fit the google form content
+  function resizeIframe(iframe) {
+    try {
+      // Access the iframe’s document height
+      const doc = iframe.contentWindow.document;
+      iframe.style.height = doc.body.scrollHeight + "px";
+    } catch (e) {
+      // If cross‑origin blocks direct access, fallback to a large height
+      iframe.style.height = "1200px";
+    }
+  }
 
     // script for the countdown timer
     // Set the wedding date
